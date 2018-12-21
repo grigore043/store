@@ -1,8 +1,9 @@
 package com.store.dao;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-public abstract class AbstractDao<E> {
+public abstract class AbstractDao<EntityType, EntityId> {
 
     private SessionFactory sessionFactory;
 
@@ -10,8 +11,20 @@ public abstract class AbstractDao<E> {
         this.sessionFactory = sessionFactory;
     }
 
-    public void persist(E entity) {
+    public void persist(EntityType entity) {
         sessionFactory.getCurrentSession().persist(entity);
+    }
+
+    protected Session getCurrentSession() {
+        return sessionFactory.getCurrentSession();
+    }
+
+    public void flush() {
+        getCurrentSession().flush();
+    }
+
+    public void clear() {
+        getCurrentSession().clear();
     }
 
 }

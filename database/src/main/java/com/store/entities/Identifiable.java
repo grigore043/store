@@ -1,9 +1,9 @@
 package com.store.entities;
 
-import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
-@Entity
+@MappedSuperclass
 public abstract class Identifiable<I> {
 
     @Id
@@ -16,5 +16,5 @@ public abstract class Identifiable<I> {
     public void setId(I id) {
         this.id = id;
     }
-    
+
 }

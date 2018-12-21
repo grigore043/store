@@ -4,6 +4,11 @@ import com.store.dao.AbstractDao;
 import com.store.dao.ItemDao;
 import com.store.entities.Item;
 
-public class JpaItemDao extends AbstractDao<Item> implements ItemDao {
+public class JpaItemDao extends AbstractDao<Item, Long> implements ItemDao {
+
+    @Override
+    public Item findById(Long id) {
+        return getCurrentSession().get(Item.class, id);
+    }
 
 }

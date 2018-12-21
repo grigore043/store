@@ -7,31 +7,26 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <context:property-placeholder location="classpath:liquibase/liquibase.properties"/>
+
     <bean id="sessionFactory"
           class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
-        <property name="dataSource"
-                  ref="dataSource"/>
-        <property name="packagesToScan"
-                  value="com.store.entities"/>
+        <property name="dataSource" ref="dataSource"/>
+        <property name="packagesToScan" value="com.store.entities"/>
         <property name="hibernateProperties">
             <props>
-                <prop key="hibernate.hbm2ddl.auto">
-                    create-drop
-                </prop>
-                <prop key="hibernate.dialect">
-                    org.hibernate.dialect.H2Dialect
-                </prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
             </props>
         </property>
     </bean>
 
-    <bean id="dataSource"
-          class="org.apache.tomcat.dbcp.dbcp2.BasicDataSource">
-        <property name="driverClassName" value="org.h2.Driver"/>
-        <property name="url" value="jdbc:h2:mem:db;DB_CLOSE_DELAY=-1"/>
-        <property name="username" value="sa"/>
-        <property name="password" value="sa"/>
-    </bean>
+    <!--<bean id="dataSource"-->
+    <!--class="org.apache.tomcat.dbcp.dbcp2.BasicDataSource">-->
+    <!--<property name="driverClassName" value="org.h2.Driver"/>-->
+    <!--<property name="url" value="jdbc:h2:mem:db;DB_CLOSE_DELAY=-1"/>-->
+    <!--<property name="username" value="sa"/>-->
+    <!--<property name="password" value="sa"/>-->
+    <!--</bean>-->
 
     <!--<bean id="dataSource"-->
     <!--class="com.mysql.cj.jdbc.MysqlDataSource">-->
@@ -41,6 +36,14 @@
     <!--<property name="password" value="sa"/>-->
     <!--</bean>-->
 
+    <bean id="dataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/store?useSSL=false"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+    </bean>
+
     <bean id="txManager"
           class="org.springframework.orm.hibernate5.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"/>
@@ -49,4 +52,6 @@
     <bean name="abstractDao" class="com.store.dao.AbstractDao" abstract="true">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
+
+    <bean name="itemDao" class="com.store.dao.impl.JpaItemDao" parent="abstractDao"/>
 </beans>
