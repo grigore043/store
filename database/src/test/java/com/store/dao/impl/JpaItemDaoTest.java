@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:database.xml")
+@ContextConfiguration("classpath:test-database.xml")
 @Transactional
 public class JpaItemDaoTest {
 

@@ -9,8 +9,7 @@
 
     <context:property-placeholder location="classpath:liquibase/liquibase.properties"/>
 
-    <bean id="sessionFactory"
-          class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="packagesToScan" value="com.store.entities"/>
         <property name="hibernateProperties">
@@ -20,29 +19,12 @@
         </property>
     </bean>
 
-    <bean id="dataSource"
-    class="org.apache.tomcat.dbcp.dbcp2.BasicDataSource">
-    <property name="driverClassName" value="org.h2.Driver"/>
-    <property name="url" value="jdbc:h2:mem:db;DB_CLOSE_DELAY=-1"/>
-    <property name="username" value="sa"/>
-    <property name="password" value="sa"/>
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/store?useSSL=false"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
     </bean>
-
-    <!--<bean id="dataSource"-->
-    <!--class="com.mysql.cj.jdbc.MysqlDataSource">-->
-    <!--<property name="driverClassName" value="org.h2.Driver"/>-->
-    <!--<property name="url" value="jdbc:h2:mem:db;DB_CLOSE_DELAY=-1"/>-->
-    <!--<property name="username" value="sa"/>-->
-    <!--<property name="password" value="sa"/>-->
-    <!--</bean>-->
-
-    <!--<bean id="dataSource"-->
-          <!--class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
-        <!--<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>-->
-        <!--<property name="url" value="jdbc:mysql://localhost:3306/store?useSSL=false"/>-->
-        <!--<property name="username" value="root"/>-->
-        <!--<property name="password" value="root"/>-->
-    <!--</bean>-->
 
     <bean id="txManager"
           class="org.springframework.orm.hibernate5.HibernateTransactionManager">
