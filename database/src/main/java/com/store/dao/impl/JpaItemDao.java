@@ -8,7 +8,7 @@ public class JpaItemDao extends AbstractDao<Item, Long> implements ItemDao {
 
     @Override
     public Item findById(Long id) {
-        return getCurrentSession().get(Item.class, id);
+        return findByClassId(Item.class, id);
     }
 
 }
