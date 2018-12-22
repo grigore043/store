@@ -18,7 +18,9 @@ public abstract class AbstractDao<EntityType, IdType extends Serializable> imple
     }
 
     @Override
-    public EntityType findByClassId(Class<EntityType> template, IdType id) {
+    public abstract EntityType findById(IdType id);
+
+    protected EntityType findByClassId(Class<EntityType> template, IdType id) {
         return sessionFactory.getCurrentSession().get(template, id);
     }
 

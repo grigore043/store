@@ -1,6 +1,8 @@
 package com.store.dao;
 
-public interface EntityDao<EntityType, IdType> {
+import java.io.Serializable;
+
+public interface EntityDao<EntityType, IdType extends Serializable> {
 
     void flush();
 
@@ -8,6 +10,6 @@ public interface EntityDao<EntityType, IdType> {
 
     void persist(EntityType item);
 
-    EntityType findByClassId(Class<EntityType> template, IdType id);
+    EntityType findById(IdType id);
 
 }

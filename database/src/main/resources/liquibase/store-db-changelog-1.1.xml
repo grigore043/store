@@ -3,6 +3,8 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
-    <include file="liquibase/store-db-changelog-1.0.xml"/>
-    <include file="liquibase/store-db-changelog-1.1.xml"/>
+    <changeSet id="item" author="grusnac">
+        <createSequence sequenceName="item_id_sequence" incrementBy="1000" ordered="true" maxValue="0" startValue="1000"/>
+    </changeSet>
+
 </databaseChangeLog>
