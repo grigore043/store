@@ -12,7 +12,6 @@
 
     <modules>
         <module>database</module>
-        <module>integration-test</module>
     </modules>
 
     <properties>
@@ -21,5 +20,15 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
+
+
+    <profiles>
+        <profile>
+            <id>integration-test</id>
+            <modules>
+                <module>integration-test</module>
+            </modules>
+        </profile>
+    </profiles>
 
 </project>
