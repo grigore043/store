@@ -12,6 +12,7 @@
 
     <modules>
         <module>database</module>
+        <module>integration-test</module>
     </modules>
 
     <properties>
@@ -19,6 +20,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <mysql.connector.version>8.0.11</mysql.connector.version>
+        <hibernate.version>5.2.12.Final</hibernate.version>
+        <spring.version>5.0.2.RELEASE</spring.version>
     </properties>
 
 
@@ -26,7 +30,17 @@
         <profile>
             <id>integration-test</id>
             <modules>
+                <module>database</module>
                 <module>integration-test</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>default</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <modules>
+                <module>database</module>
             </modules>
         </profile>
     </profiles>
