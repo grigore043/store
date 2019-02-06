@@ -12,7 +12,6 @@
 
     <modules>
         <module>database</module>
-        <module>integration-test</module>
     </modules>
 
     <properties>
@@ -32,15 +31,6 @@
             <modules>
                 <module>database</module>
                 <module>integration-test</module>
-            </modules>
-        </profile>
-        <profile>
-            <id>default</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <modules>
-                <module>database</module>
             </modules>
         </profile>
     </profiles>
