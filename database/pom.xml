@@ -11,6 +11,10 @@
 
     <artifactId>database</artifactId>
 
+    <properties>
+        <hibernate.version>5.2.12.Final</hibernate.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.hibernate</groupId>

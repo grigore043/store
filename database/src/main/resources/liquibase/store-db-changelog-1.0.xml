@@ -4,7 +4,7 @@
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
     <changeSet id="item" author="grusnac">
-        <createTable tableName="item">
+        <createTable tableName="t_item">
             <column name="item_id" type="int">
                 <constraints primaryKey="true" nullable="false" />
             </column>
@@ -12,6 +12,20 @@
                 <constraints nullable="false"/>
             </column>
             <column name="item_description" type="varchar(500)" />
+        </createTable>
+    </changeSet>
+
+    <changeSet id="order" author="grusnac">
+        <createTable tableName="t_order">
+            <column name="order_id" type="int">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="order_item_count" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer_id" type="int">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
     </changeSet>
 

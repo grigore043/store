@@ -33,4 +33,5 @@
     </bean>
 
     <bean name="itemDao" class="com.store.dao.impl.JpaItemDao" parent="abstractDao"/>
+    <bean name="orderDao" class="com.store.dao.impl.JpaOrderDao" parent="abstractDao"/>
 </beans>

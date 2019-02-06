@@ -4,8 +4,10 @@ package com.store.entities;
 import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "t_item")
 @AttributeOverride(name = "id", column = @Column(name = "item_id"))
 public class Item extends Identifiable<Long> {
 
