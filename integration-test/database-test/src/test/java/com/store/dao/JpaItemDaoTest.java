@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
-@ContextConfiguration({"classpath:test-database.xml"})
+@ContextConfiguration({"classpath:database-test.xml"})
 @Transactional
 public class JpaItemDaoTest {
 
@@ -24,7 +24,7 @@ public class JpaItemDaoTest {
     @Before
     public void setUp() {
         item = new Item("Test", "Test description");
-        item.setId(Long.parseLong("1"));
+        item.setId(100L);
     }
 
     @Test
@@ -33,7 +33,7 @@ public class JpaItemDaoTest {
         itemDao.flush();
         itemDao.clear();
         Item newItem = itemDao.findById(item.getId());
-        assertEquals(item.getItemName(), newItem.getItemName());
-        assertEquals(item.getItemDescription(), newItem.getItemDescription());
+        assertEquals(item.getName(), newItem.getName());
+        assertEquals(item.getDescription(), newItem.getDescription());
     }
 }

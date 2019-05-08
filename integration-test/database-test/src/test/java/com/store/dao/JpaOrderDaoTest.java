@@ -1,5 +1,6 @@
 package com.store.dao;
 
+import com.store.entities.Item;
 import com.store.entities.Order;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
-@ContextConfiguration({"classpath:test-database.xml"})
+@ContextConfiguration({"classpath:database-test.xml"})
 @Transactional
 public class JpaOrderDaoTest {
 
@@ -23,8 +24,8 @@ public class JpaOrderDaoTest {
 
     @Before
     public void setUp() {
-        order = new Order(10L, 1L);
-        order.setId(Long.parseLong("1"));
+        order = new Order(10L, 0L, 0L);
+        order.setId(100L);
     }
 
     @Test
@@ -34,6 +35,6 @@ public class JpaOrderDaoTest {
         orderDao.clear();
         Order newOrder = orderDao.findById(order.getId());
         assertEquals(order.getCustomerId(), newOrder.getCustomerId());
-        assertEquals(order.getOrderItemCount(), newOrder.getOrderItemCount());
+        assertEquals(order.getItemCount(), newOrder.getItemCount());
     }
 }
