@@ -3,34 +3,59 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
-    <changeSet id="item" author="grusnac">
-        <createTable tableName="t_item">
-            <column name="item_id" type="int">
-                <constraints primaryKey="true" nullable="false" />
+    <changeSet id="customer" author="grusnac">
+        <createTable tableName="t_customer">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="item_name" type="varchar(50)">
+            <column name="first_name" type="varchar(20)">
                 <constraints nullable="false"/>
             </column>
-            <column name="item_description" type="varchar(500)" />
+            <column name="last_name" type="varchar(20)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="item" author="grusnac">
+        <createTable tableName="t_item">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="varchar(500)"/>
         </createTable>
     </changeSet>
 
     <changeSet id="order" author="grusnac">
         <createTable tableName="t_order">
-            <column name="order_id" type="int">
-                <constraints primaryKey="true" nullable="false" />
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="order_item_count" type="int">
+            <column name="item_count" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="item_id" type="int">
                 <constraints nullable="false"/>
             </column>
             <column name="customer_id" type="int">
                 <constraints nullable="false"/>
             </column>
         </createTable>
+        <addForeignKeyConstraint baseColumnNames="item_id"
+                                 baseTableName="t_order"
+                                 constraintName="fk_item_id"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="t_item"/>
+        <addForeignKeyConstraint baseColumnNames="customer_id"
+                                 baseTableName="t_order"
+                                 constraintName="fk_customer_id"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="t_customer"/>
     </changeSet>
-
-    <!--<changeSet id="tag-1.0" author="grusnac">-->
-        <!--<tagDatabase tag="1.0" />-->
-    <!--</changeSet>-->
 
 </databaseChangeLog>

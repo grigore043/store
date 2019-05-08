@@ -8,28 +8,28 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "t_item")
-@AttributeOverride(name = "id", column = @Column(name = "item_id"))
+@AttributeOverride(name = "id", column = @Column(name = "id"))
 public class Item extends Identifiable<Long> {
 
-    @Column(name = "item_name")
-    private String itemName;
+    @Column(name = "name")
+    private String name;
 
-    @Column(name = "item_description")
-    private String itemDescription;
+    @Column(name = "description")
+    private String description;
 
-    public Item(String itemName, String itemDescription) {
-        this.itemName = itemName;
-        this.itemDescription = itemDescription;
+    public Item(String name, String description) {
+        this.name = name;
+        this.description = description;
     }
 
     private Item() {}
 
-    public String getItemName() {
-        return itemName;
+    public String getName() {
+        return name;
     }
 
-    public String getItemDescription() {
-        return itemDescription;
+    public String getDescription() {
+        return description;
     }
 
 }

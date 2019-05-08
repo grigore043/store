@@ -7,18 +7,22 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "t_order")
-@AttributeOverride(name = "id", column = @Column(name = "order_id"))
+@AttributeOverride(name = "id", column = @Column(name = "id"))
 public class Order extends Identifiable<Long> {
 
     @Column(name = "customer_id")
     private Long customerId;
 
-    @Column(name = "order_item_count")
-    private Long orderItemCount;
+    @Column(name = "item_count")
+    private Long itemCount;
 
-    public Order(Long orderItemCount, Long customerId) {
-        this.orderItemCount = orderItemCount;
+    @Column(name = "item_id")
+    private Long itemId;
+
+    public Order(Long itemCount, Long customerId, Long itemId) {
+        this.itemCount = itemCount;
         this.customerId = customerId;
+        this.itemId = itemId;
     }
 
     private Order() {}
@@ -27,7 +31,11 @@ public class Order extends Identifiable<Long> {
         return customerId;
     }
 
-    public Long getOrderItemCount() {
-        return orderItemCount;
+    public Long getItemCount() {
+        return itemCount;
+    }
+
+    public Long getItemId() {
+        return itemId;
     }
 }
