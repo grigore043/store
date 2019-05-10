@@ -19,4 +19,12 @@
         </loadData>
     </changeSet>
 
+    <changeSet id="orders" author="grusnac">
+        <loadData tableName="t_order"
+                  catalogName="store"
+                  schemaName="store"
+                  file="data/order.csv"
+        />
+    </changeSet>
+
 </databaseChangeLog>

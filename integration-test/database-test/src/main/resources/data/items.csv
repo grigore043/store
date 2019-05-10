@@ -1,0 +1,12 @@
+id,name,description
+0,CPU,"Central Processing Unit"
+1,GPU,"Graphics Processing Unit"
+2,RAM,"Random Access Memory"
+3,Motherboard,""
+4,PSU,"Power Supply Unit"
+5,SSD,"Solid State Drive"
+6,HDD,"Hard Disk Drive"
+7,"Heat Sink",""
+8,Cooler,""
+9,Chaise,"Computer Case"
+10,"M.2 SSD","M.2 Solid State Drive"

@@ -1,6 +1,5 @@
 package com.store.dao;
 
-import com.store.entities.Item;
 import com.store.entities.Order;
 import org.junit.Before;
 import org.junit.Test;
